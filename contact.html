@@ -1,0 +1,75 @@
+
+<style>
+	#frm{
+		background-image: linear-gradient(rgba(0,0,50,0.5),rgba(0.0,50,0.5)),url(cat.jpg);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		width: 50%;
+		margin-left:30%;
+		margin-top: 30px; 
+	}
+</style>
+
+<form name="contactform" method="post"  id="frm">
+<table width="450px">
+<tr>
+ <td valign="top">
+  <label for="name">Name *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="name" maxlength="50" size="30">
+ </td>
+</tr>
+
+<tr>
+ <td valign="top">
+  <label for="email">Email *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="email" maxlength="80" size="30">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="telephone">Telephone Number</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="telephone" maxlength="30" size="30">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="comments">Comments *</label>
+ </td>
+ <td valign="top">
+  <textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea>
+ </td>
+</tr>
+<tr>
+ <td colspan="2" style="text-align:center">
+  <input type="submit" value="Submit"> 
+ </td>
+</tr>
+</table>
+</form>
+
+<?php
+if(isset($_POST['email'])) {
+
+	
+	$name = $_POST['name']; // required
+	$visitor_email = $_POST['email']; // required
+	$telephone = $_POST['telephone']; // not required
+	$comments = $_POST['comments']; // required
+
+	$email_from="example@gmail.com";
+	$email_subject="new form submission";
+	$email_body="Name: $name.\n"."User Email address: $visitor_email.\n"."Message: $comments.\n";
+	$to="swagatikapanda164@gmail.com";
+	$headers="From: $email_from\r\n";
+	$headers="reply to: $email_from\r\n";
+	mail($to,$email_subject,$email_body,$headers);
+}
+?>  
+Thank you for contacting us. We will be in touch with you very soon.
